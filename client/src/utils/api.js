@@ -1,4 +1,4 @@
-export async function fetchWeather(input) {
+export async function fetchCurrentWeather(input) {
     const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${input}`
     const options = {
         method: 'GET',

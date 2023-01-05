@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hourly = () => {
   return (
-    <div>Hourly</div>
+    <div></div>
   )
 }
 
