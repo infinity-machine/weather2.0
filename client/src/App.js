@@ -1,5 +1,5 @@
 import { Login } from './components/personal';
-import { Forecast }from './components/forecast';
+import Forecast from './components/forecast/Forecast'
 
 function App() {
 

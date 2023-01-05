@@ -1,4 +1,5 @@
 import React from 'react'
+import Clock from './Clock'
 
 const Current = (props) => {
 
@@ -8,6 +9,7 @@ const Current = (props) => {
         <h2>{props.location.name}</h2>
         <p>{props.location.region}, {props.location.country}</p>
       </div>
+      <Clock />
       <div>
         <p>{props.current.temp_f}&deg;</p>
         <p>{props.current.condition.text}</p>
