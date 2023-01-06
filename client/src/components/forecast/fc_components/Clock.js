@@ -1,13 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react'; 
+import moment from 'moment';
 
 const Clock = () => {
-    const date = new Date();
-    console.log(date.getHours(), date.getMinutes(), date.getSeconds());
-    console.log('hi');
+  const [currentTime, setCurrentTime] = useState('');
+
+  const handleTime = () => {
+    setInterval(() => {
+      setCurrentTime(moment().format('h:mm:ss A'));
+    }, 1000);
+  };
+
+  useEffect(() => {
+    handleTime()
+  }, []);
+
 
   return (
-    <div>Clock</div>
-  )
-}
+    <div>{currentTime}</div>
+  );
+};
 
 export default Clock

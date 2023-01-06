@@ -1,8 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
-import { Navlink } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     const [formInput, setFormInput] = useState({
         email: '',
         password: ''
@@ -36,10 +35,10 @@ const Login = () => {
                     value={formInput.password}
                     onChange={handleInputChange}>
                 </input>
-                <button>LOG IN</button>
+                <button>REGISTER</button>
             </form>
         </div>
     )
 }
 
-export default Login
+export default Register
