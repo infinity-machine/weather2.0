@@ -2,7 +2,9 @@ const auth_router = require('express').Router();
 const {registerUser} = require('../controllers/auth_controllers');
 
 auth_router.post('/register', (req, res) => {
-    registerUser(req.body);
+    const token = registerUser(req.body);
+    res.json(token);
+
 });
 
 auth_router.post('/login', (req, res) => {
