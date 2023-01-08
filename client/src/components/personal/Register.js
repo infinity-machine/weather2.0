@@ -1,13 +1,15 @@
 import React from 'react'
 import { useState } from 'react';
-import registerUser from '../../utils/auth';
+import { registerUser } from '../../utils/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [formInput, setFormInput] = useState({
         email: '',
         password: ''
     });
-    const [error, setError] = useState('')
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         setFormInput({
@@ -16,11 +18,19 @@ const Register = () => {
         });
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const user_to_register = formInput
         if (!user_to_register.username && !user_to_register.password) return setError('YOU MUST ENTER ALL REQUIRED FIELDS');
-        registerUser(user_to_register);
+
+        try {
+            const token = await registerUser(user_to_register);
+            localStorage.setItem('token', token);
+            navigate('/');
+        } 
+        catch(error) {
+            setError(error.message);
+        }
     }
     return (
         <div>

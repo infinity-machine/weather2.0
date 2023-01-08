@@ -7,9 +7,14 @@ function signToken(user) {
 }
 
 
-function registerUser(user_to_register) {
-    const token = signToken(user_to_register);
-    return token
+async function registerUser(user_to_register) {
+    const new_user = await User.create(user_to_register);
+    if (!new_user) return false;
+    const token_data = {
+        email: new_user.email
+    }
+    const token = signToken(token_data);
+    return token;
 }
 
 

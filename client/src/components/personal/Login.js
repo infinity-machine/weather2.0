@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom'
 
 const Login = () => {
     const [formInput, setFormInput] = useState({
@@ -37,6 +38,7 @@ const Login = () => {
                 </input>
                 <button>LOG IN</button>
             </form>
+            < NavLink to="/register">REGISTER</NavLink>
         </div>
     )
 }

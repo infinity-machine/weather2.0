@@ -1,13 +1,20 @@
-import { Login } from './components/personal';
+import { useEffect, useState } from 'react';
+import { Login, Dashboard } from './components/personal';
 import { Forecast } from './components/forecast'
-import { NavLink } from 'react-router-dom';
+import { hasToken } from './utils/auth'
 
 function App() {
+  const [ user, setUser ] = useState('');
+  useEffect(() => {
+    const user_data = hasToken();
+    if (user_data) setUser(user_data);
+  }, []);
 
   return (
     <div>
-      < Login />
-      < NavLink to="/register">REGISTER</NavLink>
+      {
+        user ? < Dashboard /> : < Login />
+      }
       < Forecast />
     </div>
   );
