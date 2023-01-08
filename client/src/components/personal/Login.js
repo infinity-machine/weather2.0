@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-import { Navlink } from 'react-router-dom';
 
 const Login = () => {
     const [formInput, setFormInput] = useState({

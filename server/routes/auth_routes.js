@@ -1,8 +1,8 @@
 const auth_router = require('express').Router();
-const { User } = require('../models');
+const {registerUser} = require('../controllers/auth_controllers');
 
 auth_router.post('/register', (req, res) => {
-    console.log(req.body)
+    registerUser(req.body);
 });
 
 auth_router.post('/login', (req, res) => {

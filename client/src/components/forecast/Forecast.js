@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { fetchWeather } from '../../utils/api';
-import { Current, Hourly } from './fc_components';
+import { Current, Hourly } from '../forecast';
 
 const Forecast = () => {
   const [ formInput, setFormInput ] = useState('');

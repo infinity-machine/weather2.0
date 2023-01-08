@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
+import registerUser from '../../utils/auth';
 
 const Register = () => {
     const [formInput, setFormInput] = useState({
         email: '',
         password: ''
     });
+    const [error, setError] = useState('')
 
     const handleInputChange = (e) => {
         setFormInput({
@@ -16,7 +18,9 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('hey')
+        const user_to_register = formInput
+        if (!user_to_register.username && !user_to_register.password) return setError('YOU MUST ENTER ALL REQUIRED FIELDS');
+        registerUser(user_to_register);
     }
     return (
         <div>
@@ -37,6 +41,7 @@ const Register = () => {
                 </input>
                 <button>REGISTER</button>
             </form>
+            {error ? <p>{error}</p> : <></>}
         </div>
     )
 }
