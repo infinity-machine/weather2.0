@@ -17,7 +17,18 @@ async function registerUser(user_to_register) {
     return token;
 }
 
+async function loginUser(user_to_login) {
+    const user_data = await User.findOne({
+        email: user_to_login.email
+    });
+    if (!user_data) return false;
+    const token_data = {
+        email: user_data.email
+    };
+    const token = signToken(token_data);
+    return token;
+}
 
 module.exports = {
-    registerUser
+    registerUser, loginUser
 }

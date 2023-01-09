@@ -21,7 +21,25 @@ export async function registerUser(user_to_register) {
         const token = await response.json();
         return token;
     };
-    if (response.status!== 200) {
+    if (response.status !== 200) {
+        throw new Error('ACCOUNT CREATION FAILED');
+    }
+}
+
+export async function loginUser(user_to_login) {
+    const response = await fetch('/auth/login', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user_to_login)
+    });
+    if (response.status === 200) {
+        const token = await response.json();
+        return token;
+    };
+    if (response.status !== 200) {
         throw new Error('ACCOUNT CREATION FAILED');
     }
 }

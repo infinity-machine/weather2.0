@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom'
+import { loginUser } from '../../utils/auth'
 
 const Login = () => {
     const [formInput, setFormInput] = useState({
@@ -15,9 +16,11 @@ const Login = () => {
         });
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('hey')
+        const token = await loginUser(formInput);
+        localStorage.setItem('token', token);
+        window.location.reload();
     }
     return (
         <div>

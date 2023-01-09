@@ -5,6 +5,7 @@ import { hasToken } from './utils/auth'
 
 function App() {
   const [ user, setUser ] = useState('');
+
   useEffect(() => {
     const user_data = hasToken();
     if (user_data) setUser(user_data);
@@ -13,7 +14,7 @@ function App() {
   return (
     <div>
       {
-        user ? < Dashboard /> : < Login />
+        user ? < Dashboard user={user}/> : < Login />
       }
       < Forecast />
     </div>
